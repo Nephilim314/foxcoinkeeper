@@ -32,6 +32,16 @@ $ make
 $ sudo make install
 
 Run Bitcoin Core
-$ bitcoin-qt
+$ bitcoind
 
+$bitcoin-cli getinfo
+
+Using bfgminer
+$sudo apt-get install (build-essential autoconf automake libtool pkg-config libcurl4-gnutls-dev
+	libjansson-dev uthash-dev libncursesw5-dev libudev-dev libusb-1.0-0-dev
+	libevent-dev libmicrohttpd-dev hidapi)
+$./autogen.sh
+$./configure --enable-cpumining
+make
+$./bfgminer -o 127.0.0.1:9013 -u nayeemaquib -p test113618 --generate-to 13WLBuVMEZRCW7jbxgGyZY41to6VhR6dFf --algo auto --cpu-threads 2
 
