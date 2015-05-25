@@ -14,7 +14,7 @@ import java.util.*;
 public class Rmain {
     public static void main(String[] args){
         System.out.println(Constants.getIp());
-        thing t = new thing("localhost", Constants.PROXY_PORT);
+        thing t = new thing(args[0], Constants.PROXY_PORT);
 //        subThing st = new subThing("RAWR");
         LinkedList<String> strings = new LinkedList<String>();
         try {
