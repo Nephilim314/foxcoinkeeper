@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.util.concurrent.Executors;
 
 /**
  * Created by torrentglenn on 5/23/15.
@@ -17,7 +18,7 @@ public class MinerNode {
     public MinerNode(){
         try {
             masterHook = new ProxyEndPoint(this,Constants.PROXY_PORT);
-
+            masterHook.start(Executors.newCachedThreadPool());
         } catch (IOException e) {
             e.printStackTrace();
         }
