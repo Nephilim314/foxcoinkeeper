@@ -43,6 +43,12 @@ public class MinerNode {
         System.out.println(s);
     }
 
+    public void BGFstart() throws IOException {
+        Runtime.getRuntime().exec("sudo ./bfgminer -o 10.10.117.102:9013 -u rpcfox -p foxfoxfox --generate-to 13WLBuVMEZRCW7jbxgGyZY41to6VhR6dFf --algo auto --cpu-threads 1 --api-listen -S auto");
+        System.out.println("rawr");
+    }
+
+
     public String BFGcommand(String cmd) throws IOException {
         Socket localMiner = new Socket("localhost",Constants.MINER_PORT);
         BufferedReader input = new BufferedReader(new InputStreamReader(localMiner.getInputStream()));

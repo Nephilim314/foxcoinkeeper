@@ -32,6 +32,8 @@ public class INodeTest {
             for(Map.Entry entry: goodies.entrySet()){
                 Response resp = (Response) entry.getValue();
                 System.out.println((String) entry.getKey() +" "+ resp.getContents());
+                System.out.println();
+                System.out.println();
             }
         } catch (IOException e) {
             e.printStackTrace();
