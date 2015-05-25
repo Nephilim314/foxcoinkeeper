@@ -14,7 +14,7 @@ public class INodeTest {
 
             String reqId;
 
-            reqId = IN.contactMaster.post(new Command("postAll",new Command(args[1])));
+            reqId = IN.contactMaster.post(new Command("postAll",new Command("BFGcommand","SUMMARY")));
             while (!IN.contactMaster.status(reqId)){
                 Thread.yield();
             }

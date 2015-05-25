@@ -5,7 +5,7 @@ import java.util.*;
  */
 public class Constants {
     public static final int PROXY_PORT = 9014;
-    public static final int MINER_PORT = 4038;
+    public static final int MINER_PORT = 4028;
 
 
     public static String getIp(){
