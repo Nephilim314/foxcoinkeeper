@@ -51,6 +51,14 @@ public class MinerNode {
         return input.readLine();
     }
 
+    public void BFGfire(String cmd) throws IOException {
+        Socket localMiner = new Socket("localhost",Constants.MINER_PORT);
+        BufferedReader input = new BufferedReader(new InputStreamReader(localMiner.getInputStream()));
+        PrintStream output = new PrintStream(localMiner.getOutputStream());
+        output.println(cmd);
+        localMiner.close();
+    }
+
     public void setMasterIP(String masterIP){
         this.masterIP = masterIP;
     }
