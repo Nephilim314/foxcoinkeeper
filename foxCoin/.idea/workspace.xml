@@ -112,8 +112,8 @@
       <file leaf-file-name="MinerNode.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MinerNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51970446" vertical-offset="358" max-vertical-offset="1395">
-              <caret line="52" column="42" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.6859606" vertical-offset="163" max-vertical-offset="1200">
+              <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#686#687#0" expanded="true" />
@@ -126,8 +126,8 @@
                 <element signature="e#893#894#0" expanded="true" />
                 <element signature="e#927#928#0" expanded="true" />
                 <element signature="e#964#965#0" expanded="true" />
-                <element signature="e#2508#2509#0" expanded="true" />
-                <element signature="e#2548#2549#0" expanded="true" />
+                <element signature="e#2153#2154#0" expanded="true" />
+                <element signature="e#2193#2194#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -825,8 +825,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MinerNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51970446" vertical-offset="358" max-vertical-offset="1395">
-          <caret line="52" column="42" selection-start-line="52" selection-start-column="42" selection-end-line="52" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.6859606" vertical-offset="163" max-vertical-offset="1200">
+          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#686#687#0" expanded="true" />
@@ -839,8 +839,8 @@
             <element signature="e#893#894#0" expanded="true" />
             <element signature="e#927#928#0" expanded="true" />
             <element signature="e#964#965#0" expanded="true" />
-            <element signature="e#2508#2509#0" expanded="true" />
-            <element signature="e#2548#2549#0" expanded="true" />
+            <element signature="e#2153#2154#0" expanded="true" />
+            <element signature="e#2193#2194#0" expanded="true" />
           </folding>
         </state>
       </provider>
