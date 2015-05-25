@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.Executors;
 
 /**
  * Created by torrentglenn on 5/23/15.
@@ -16,6 +17,7 @@ public class MasterNode {
         try {
             remoteQueue = new ProxyEndPoint(this, Constants.PROXY_PORT);
             this.id = id;
+            remoteQueue.start(Executors.newCachedThreadPool());
         } catch (IOException e) {
             e.printStackTrace();
         }
