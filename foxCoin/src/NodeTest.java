@@ -7,7 +7,7 @@ public class NodeTest {
         System.out.println(n.getId());
         for(;;){
             n.masterHook.execute();
-            Thread.yield();
+            Thread.yield(); //this is vital if we ever want to run anything....
         }
     }
 }

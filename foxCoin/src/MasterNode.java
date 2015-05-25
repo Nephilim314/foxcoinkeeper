@@ -37,9 +37,26 @@ public class MasterNode {
 
 
 
+    public LinkedHashMap<String, String> postAll(Command cmd) throws IOException {
+        LinkedHashMap<String, String> m = new LinkedHashMap<String, String>();
+        for (String minerID: miners.keySet()){
+            m.put(minerID, miners.get(minerID).post(cmd));
+        }
+        return m;
+    }
 
+    public LinkedHashMap<String, Response> getAll(LinkedHashMap<String, String> idToReqId) throws IOException, ClassNotFoundException {
+        LinkedHashMap<String, Response> l = new LinkedHashMap<String, Response>();
+        for(Map.Entry entry: idToReqId.entrySet()){
+            if(miners.get(entry.getKey()).status((String) entry.getValue())) {
+                l.put((String) entry.getKey(), miners.get(entry.getKey()).get((String) entry.getValue()));
+                idToReqId.remove(entry.getKey());
+            }
+        }
+        return l;
+    }
 
-    public void fireAllMiners(Command cmd) throws IOException {
+    public void fireAll(Command cmd) throws IOException {
         for (String minerID: miners.keySet()){
             miners.get(minerID).fire(cmd);
         }
