@@ -43,7 +43,8 @@ public class MinerNode {
         System.out.println(s);
     }
 
-    public void BGFstart() throws IOException {
+    public void BFGstart() throws IOException {
+        System.out.println("starting?");
         Runtime.getRuntime().exec("sudo ./bfgminer -o 10.10.117.102:9013 -u rpcfox -p foxfoxfox --generate-to 13WLBuVMEZRCW7jbxgGyZY41to6VhR6dFf --algo auto --cpu-threads 1 --api-listen -S auto");
         System.out.println("rawr");
     }
