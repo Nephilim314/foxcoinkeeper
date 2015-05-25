@@ -9,6 +9,7 @@ import java.util.Map;
 public class MNodeTest {
     public static void main(String[] args){
         MasterNode m = new MasterNode("fox1");
+        System.out.println(m.getIP());
         try {
             for(String s : args){
                 m.addMiner(s,Constants.PROXY_PORT,m.getId()+Long.toString(new Date().getTime()));
