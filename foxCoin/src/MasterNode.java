@@ -47,7 +47,7 @@ public class MasterNode {
     public void addMiner(String IP, int port, String uid) throws IOException {
         Proxy miner = new Proxy(IP,port);
 
-        miner.fire(new Command("setMasterIP",IP));
+        miner.fire(new Command("setMasterIP",Constants.getIp()));
         miner.fire(new Command("setId",uid));
         miners.put(uid, miner);
     };
