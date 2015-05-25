@@ -1,9 +1,12 @@
 import java.io.IOException;
-import java.util.*;
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * Created by torrentglenn on 5/25/15.
  */
-public class MasterTest {
+public class MNodeTest {
     public static void main(String[] args){
         MasterNode m = new MasterNode("fox1");
         try {
@@ -25,10 +28,15 @@ public class MasterTest {
                 System.out.println((String)entry.getKey() +" "+ r.getContents());
             }
 
+            for(;;) {
+                m.remoteQueue.execute();
+                Thread.yield();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
+
 }
