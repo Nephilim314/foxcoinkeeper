@@ -4,7 +4,7 @@ import java.util.*;
  * Created by torrentglenn on 5/21/15.
  */
 public class Constants {
-    public static final int PROXY_PORT = 9013;
+    public static final int PROXY_PORT = 9014;
     public static final int MINER_PORT = 4038;
 
 
