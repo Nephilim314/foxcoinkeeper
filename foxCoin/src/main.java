@@ -2,6 +2,7 @@ import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.concurrent.Executors;
 
 /**
  * Created by torrentglenn on 5/21/15.
@@ -16,7 +17,17 @@ public class main {
 
         //thing t = new thing("localhost", Constants.PROXY_PORT);
         subThing st = new subThing("RAWR");
-
+        st.ep.start(Executors.newCachedThreadPool());
+        for(;;){
+         //   try {
+               // Thread.sleep(1);
+         //   } catch (InterruptedException e) {
+        //        e.printStackTrace();
+          //  }
+            st.ep.execute();
+            Thread.yield();
+        }
+/*
         try {
             st.ep.listen(Constants.PROXY_PORT);
           //  System.out.println((String) t.p.invoke("roar"));
@@ -28,6 +39,7 @@ public class main {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+  */
         /*Command cmdTwo = null;
         Command cmd = new Command("concat","-nyan");
 

@@ -5,8 +5,22 @@ import java.io.IOException;
  */
 public class subThing{
     public String roar(){
-        System.out.println("YES");
         return str;
+    }
+
+    public void doThing(String in){
+        System.out.println(in);
+    }
+
+    public String slp(int secs) {
+
+        try {
+            Thread.sleep(secs*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return "I slept " + Integer.toString(secs);
     }
 
     public int sum(int ... i){
@@ -14,13 +28,14 @@ public class subThing{
         for (int a: i){
             j+=a;
         }
+        System.out.println(j);
         return j;
     }
 
     public subThing(String s){
         str = s;
         try {
-            ep = new ProxyEndPoint(this);
+            ep = new ProxyEndPoint(this, Constants.PROXY_PORT);
         } catch (IOException e) {
             e.printStackTrace();
         }
