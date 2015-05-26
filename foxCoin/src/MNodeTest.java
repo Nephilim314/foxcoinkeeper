@@ -8,8 +8,9 @@ import java.util.Map;
  */
 public class MNodeTest {
     public static void main(String[] args){
-        MasterNode m = new MasterNode("fox1");
+        MasterNode m = new MasterNode(args[0]);
         System.out.println(m.getIP());
+     /*
         try {
             for(String s : args){
                 m.addMiner(s,Constants.PROXY_PORT,m.getId()+Long.toString(new Date().getTime()));
@@ -33,11 +34,13 @@ public class MNodeTest {
                 m.remoteQueue.execute();
                 Thread.yield();
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        */
     }
 
 }
