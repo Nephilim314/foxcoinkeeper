@@ -9,20 +9,25 @@ import java.util.concurrent.ExecutorService;
  * Created by torrentglenn on 5/21/15.
  */
 public class ProxyEndPoint implements Runnable{
-    public Map<String,Method> methodMap = new HashMap<String, Method>();
+    //Although called a proxy endpoint, it's really more of a message box
+    //this object allows you to send commands over the network
+    //to an object and optionally retrieve return values from called functions
+    public Map<String,Method> methodMap = new HashMap<String, Method>(); //this is the secret method map
     public Object that;
     public ServerSocket listener;
     public Socket proxySocket;
     public int port;
     public ObjectInputStream input;
     public ObjectOutputStream output;
-    public ArrayList<Request> reqQueue = new ArrayList<Request>();
+    public ArrayList<Request> reqQueue = new ArrayList<Request>(); //the queue of
     public HashMap<String,Response> respMap = new HashMap<String, Response>();
 
     public ProxyEndPoint(Object owner, int port) throws IOException {
         that = owner;
         this.port = port;
-        //proxySocket = new Socket(MIP, Constants.PROXY_PORT);
+
+        //this makes a map of strings to PUBLIC methods
+        //allowing them to be accessed from over the network
         for (Method m : owner.getClass().getMethods()){
             methodMap.put(m.getName(),m);
         }
@@ -30,11 +35,15 @@ public class ProxyEndPoint implements Runnable{
     }
 
     public void start(ExecutorService ex){
+        //this starts the proxyEndpoint listening for messages in a
+        //different thread. This process only accepts messages and
+        //updates the
         System.out.println("starting!");
         ex.execute(this);
     }
 
     public void run(){
+        //the actual run function, called in the new thread
         System.out.println("RUNNING!");
         try {
             listen(port);
@@ -54,8 +63,8 @@ public class ProxyEndPoint implements Runnable{
     }
 
     public void accept() throws IOException, ClassNotFoundException {
+        //accept a connection and handle the request
         proxySocket = listener.accept();
-       // System.out.println("Accepted");
         InputStream i = proxySocket.getInputStream();
         BufferedInputStream j = new BufferedInputStream(i);
         input = new ObjectInputStream(j);
@@ -66,7 +75,7 @@ public class ProxyEndPoint implements Runnable{
     }
 
     private void handle(Request r) throws IOException {
-      //  System.out.println("handling " + r.getType());
+        //Handle the various requests based on the requests type field
         switch (r.getType()){
             case STATUS: {
                 output = new ObjectOutputStream(new BufferedOutputStream(proxySocket.getOutputStream()));
@@ -98,20 +107,17 @@ public class ProxyEndPoint implements Runnable{
 
 
     public void execute(){
+        //Method for executing the next command from the message queue
+        //if a return value has been requested, make a response and add it
+        //to the outbox (respMap) queue
         if(reqQueue.isEmpty())
             return;
 
-      //  System.out.println("EXECUTING");
         Request req = reqQueue.get(0);
         reqQueue.remove(0);
         Object o = null;
         Command cmd = (Command) req.getContents();
         try {
-      //      System.out.println(cmd.method);
-      //      for (int i = 0; i < cmd.args.length ; i++){
-       //         System.out.println(cmd.args[i]);
-        //    }
-       //     System.out.println(methodMap.get(cmd.method));
             o = methodMap.get(cmd.method).invoke(that,cmd.args);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
@@ -120,15 +126,7 @@ public class ProxyEndPoint implements Runnable{
         }
 
         if (o != null && req.notVoid()){
-         //   System.out.println("adding return val" + o);
             respMap.put(req.getId(), new Response(o));
-            //try {
-
-                //output.writeObject(new Response(o));
-                //output.close();
-            //} catch (IOException e) {
-            //    e.printStackTrace();
-           // }
        }
     }
 }

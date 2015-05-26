@@ -5,6 +5,8 @@ import java.util.*;
  * Created by torrentglenn on 5/23/15.
  */
 public class INode {
+    //a cool interface node connects to a masterNode via
+    //proxy and issues those cool commands
     public LinkedHashMap<String,Proxy> masters = new LinkedHashMap<String, Proxy>();
     public String firstMasterIp;
     public Proxy contactMaster;
