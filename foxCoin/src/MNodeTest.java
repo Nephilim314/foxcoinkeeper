@@ -29,12 +29,13 @@ public class MNodeTest {
                 Response r = (Response) entry.getValue();
                 System.out.println((String)entry.getKey() +" "+ r.getContents());
             }
+*/
 
             for(;;) {
                 m.remoteQueue.execute();
                 Thread.yield();
             }
-
+/*
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
