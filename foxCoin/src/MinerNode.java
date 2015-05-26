@@ -14,7 +14,7 @@ public class MinerNode {
     public Proxy masterProxy;
     public ProxyEndPoint masterHook;
     public String ip;
-    public String id;
+    public String id = null;
     public String masterIP;
 
     public MinerNode(){
@@ -36,7 +36,8 @@ public class MinerNode {
     }
 
     public void setId(String s){
-        id = s;
+        if (id != null)
+            id = s;
     }
 
     public String getIP(){
