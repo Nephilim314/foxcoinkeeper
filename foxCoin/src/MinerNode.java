@@ -39,9 +39,10 @@ public class MinerNode {
         id = s;
     }
 
-    public void setId(String s){
+    public String setId(String s){
         if (id == null)
             id = s;
+        return this.id;
     }
 
     public String getIP(){
