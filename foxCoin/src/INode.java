@@ -26,6 +26,26 @@ public class INode {
     }
 
 
+    public Response postAndGet(Command cmd) throws IOException, ClassNotFoundException {
+        String reqId;
+
+        reqId = contactMaster.post(new Command("post",cmd));
+
+        while (!contactMaster.status(reqId)){
+            Thread.yield();
+        }
+        Response r = contactMaster.get(reqId);
+
+        LinkedHashMap<String,String> ss = (LinkedHashMap<String, String>) r.getContents();
+
+        reqId = contactMaster.post(new Command("getAllSync", ss));
+        while (!contactMaster.status(reqId)){
+            Thread.yield();
+        }
+        r = contactMaster.get(reqId);
+        return r;
+    }
+
 
     public String[] getAllMasterIps(Proxy m) throws IOException, ClassNotFoundException {
         String reqId = m.post(new Command("getAllMasterIps"));

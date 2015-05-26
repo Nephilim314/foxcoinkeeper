@@ -28,6 +28,16 @@ public class MinerNode {
         }
     }
 
+    public MinerNode(String MasterIP, int mport){
+        this();
+        masterProxy = new Proxy(MasterIP,mport);
+        try {
+            introduce(masterProxy);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public String getMasterAddr(){
         return masterIP;
     }
@@ -53,12 +63,16 @@ public class MinerNode {
         System.out.println(s);
     }
 
+    public void introduce(Proxy m) throws IOException {
+        m.fire(new Command("addMiner",Constants.getIp(),Constants.PROXY_PORT,getId()));
+    }
+
     public void BFGstart() throws IOException {
         //starts a local BFGminer
-        System.out.println("starting?");
+        System.out.println("starting local Miner....");
         Process p = Runtime.getRuntime().exec("sudo /home/tglenn/bitcoinstuff/bfgminer/bfgminer -o 10.10.117.102:9013 -u rpcfox -p foxfoxfox --generate-to 13WLBuVMEZRCW7jbxgGyZY41to6VhR6dFf --algo auto --cpu-threads 1 --api-listen -S auto");
 
-        System.out.println("rawr");
+        System.out.println("MINER STARTED!!! <3");
     }
 
 

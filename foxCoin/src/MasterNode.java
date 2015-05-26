@@ -44,9 +44,15 @@ public class MasterNode {
         return s;
     }
 
+    public void print(String s){
+        System.out.println(s);
+    }
+
     public void addMiner(String IP, int port, String uid) throws IOException, ClassNotFoundException {
         Proxy miner = new Proxy(IP,port);
-
+        if(uid == null){
+            uid = getId()+Long.toString(new Date().getTime());
+        }
         miner.fire(new Command("setMasterIP",Constants.getIp()));
         String reqID = miner.post(new Command("setId", uid));
         while (!miner.status(reqID)){
