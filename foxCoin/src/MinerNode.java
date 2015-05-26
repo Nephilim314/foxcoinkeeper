@@ -35,8 +35,12 @@ public class MinerNode {
         return id;
     }
 
+    public void changeId(String s){
+        id = s;
+    }
+
     public void setId(String s){
-        if (id != null)
+        if (id == null)
             id = s;
     }
 
