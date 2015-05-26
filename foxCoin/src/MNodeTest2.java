@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class MNodeTest2 {
     public static void main(String[] args){
-        MasterNode m = new MasterNode(args[0]);
+        MasterNode m = new MasterNode("foxyFox=>");
         System.out.println(m.getIP());
 
         try {
@@ -41,7 +41,7 @@ public class MNodeTest2 {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        
+
     }
 
 }
