@@ -3,7 +3,7 @@
  */
 public class NodeTest {
     public static void main(String[] args){
-        MinerNode n = new MinerNode();
+        MinerNode n = new MinerNode(args[0],Constants.PROXY_PORT);
         System.out.println(n.getIP());
         for(;;){
             n.masterHook.execute();
