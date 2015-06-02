@@ -1,7 +1,11 @@
+import java.io.File;
 import java.io.IOException;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 
 /**
  * Created by torrentglenn on 5/25/15.
@@ -10,9 +14,17 @@ public class MNodeTest2 {
     public static void main(String[] args){
         MasterNode m = new MasterNode("foxyFox=>");
         System.out.println(m.getIP());
+        List<String> Ips;
+        String fileName = args[0];
+
+
 
         try {
-            for(String s : args){
+
+            Ips = Files.readAllLines(Paths.get(fileName), Charset.defaultCharset());
+
+            for(String s : Ips){
+                System.out.println(s);
                 m.addMiner(s,Constants.PROXY_PORT,m.getId()+Long.toString(new Date().getTime()));
             }
             for(Map.Entry<String,Proxy> entry: m.miners.entrySet()){

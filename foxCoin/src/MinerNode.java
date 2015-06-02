@@ -79,7 +79,7 @@ public class MinerNode {
     public void die(){
         System.exit(0);
     }
-    
+
 
     public String BFGcommand(String cmd) throws IOException {
         //issues a command to the local BFGminer
